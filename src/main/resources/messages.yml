@@ -1,0 +1,38 @@
+messages:
+  put:  # Message when the player puts on the elytra
+    - '&7[&#FB7723hElytraSwap&7] &fСвапнул на &#FB7723%item%'
+
+  cooldown:  # Message when the player has a cooldown and tries to put on the elytra again
+    - '&7[&#FB7723hElytraSwap&7] &cУ вас действует задержка'
+
+  toggle:  # Message when the ElytraSwap feature is toggled (enabled/disabled)
+    - '&7[&#FB7723hElytraSwap&7] &fФункция &#FB7723ElytraSwap&f была %toggle%'
+
+  no-perms:  # Message when the player doesn't have permission to use the ElytraSwap
+    - '&7[&#FB7723hElytraSwap&7] &4У вас нет права %perms%'
+
+  commands:
+    reload:  # Message when the configuration is reloaded
+      - '&7[&#FB7723hElytraSwap&7] &fКонфиг перезагружен!'
+
+    toggle:  # Message when the ElytraSwap mode is toggled (enabled/disabled)
+      - '&7[&#FB7723hElytraSwap&7] &fСваппер был переведён в режим &#FB7723%toggle%'
+
+    only-players:  # Message when a command is used by someone who is not a player
+      - '&4Команда доступна лишь игрокам!'
+
+    help:  # Help command with plugin commands
+      - '&#FB7723╔'
+      - '&#FB7723║ &f/helytraswap reload &7(&#FB7723Перезагрузка конфига&7)'
+      - '&#FB7723║ &f/helytraswap toggle &7(&#FB7723Включить/выключить функцию свапа&7)'
+      - '&#FB7723║ '
+      - '&#FB7723║ &fСоздатель плагина&7: &#FB7723He3Hauka &7&o(@he3haukaX)&f'
+      - '&#FB7723╚'
+
+# External resource links
+
+# tg: https://t.me/he3haukaX
+# tg_channel: https://t.me/hplugin
+# youtube: https://www.youtube.com/@Retor_YT
+# spigot ru: https://spigotmc.ru/resources/authors/he3hauka.23927/
+# spigot org: https://www.spigotmc.org/resources/authors/dsad12d.2078385/

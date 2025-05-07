@@ -1,0 +1,9 @@
+name: hElytraSwap
+version: "1.6"
+api-version: 1.16
+main: ru.he3hauka.helytraswap.Main
+authors:
+  - He3Hauka
+website: https://t.me/hplugin
+commands:
+  helytraswap:

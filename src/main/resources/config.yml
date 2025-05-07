@@ -1,0 +1,71 @@
+mysql:
+  enable: false  # Enable or disable MySQL connection
+  host: "localhost"  # Database host address
+  port: 3306  # Port for database connection
+  database: "minecraft"  # Database name
+  username: "user"  # Database username
+  password: "password"  # Database password
+
+settings:
+  update: true
+
+  cooldown: 1
+  disabled-worlds:
+    - testworld
+  replacers:
+    enable: "enabled"
+    disable: "disabled"
+    elytra: "elytra"
+    chestplate: "chestplate"
+
+# Aviable actions:
+# 1. [Message] - HoverText + PlaceholderAPI
+# 2. [Broadcast] - HoverText + PlaceholderAPI
+# 3. [Sound]
+# 4. [Console] - PlaceholderAPI
+# 5. [Bossbar] - PlaceholderAPI
+# 6. [Title] - PlaceholderAPI
+# 7. [Actionbar] - PlaceholderAPI
+
+# Actions example:
+# 1. [Message] &#FB9C08&lMESSAGE EXAMPLE %player_name% {HoverText:cmd /example, text: &#FB9C08HOVERTEXT EXAMPLE}
+# 2. [Broadcast] &#FB9C08&lMESSAGE EXAMPLE %server_online% {HoverText:cmd /example, text: &#FB9C08HOVERTEXT EXAMPLE}
+# 3. [Sound] ENTITY_VILLAGER_NO:1.0:1.0
+# 4. [Console] say %player% qq bro, server online == %server_online%
+# 5. [Bossbar] &fBossbar example for &#FB9C08%player_name%:100:red:notched_10:1.0"
+# 6. [Title] Title example && For &#FB9C08%player_name%
+# 7. [Actionbar] Actionbar example for &#FB9C08%player_name%
+
+actions: # To delete actions, delete the entire section
+  perms:
+    - "[Message] &#FB9C08&lСВАППЕР&7: &fУ вас &#FB9C08недостаточно&f прав!"
+  cooldown:
+    - "[Message] &#FB9C08&lСВАППЕР&7: &fПодождите ещё &#FB9C08%cooldown% &fсек перед повтором"
+  cooldown-expired:
+    - "[Message] &#FB9C08&lСВАППЕР&7: &fКулдавн истёк!"
+  swapper:
+    - "[Message] &#FB9C08&lСВАППЕР&7: &fВы свапнули на &#FB9C08%item%"
+  toggle:
+    - "[Message] &#FB9C08&lСВАППЕР&7: &fВы переключили сваппера на &#FB9C08%toggle%"
+  disabled-world:
+    - "[Message] &#FB9C08&lСВАППЕР&7: &fВ данном &#FB9C08мире&f выключен свап элитр!"
+#
+# [ THIS IS ENGLISH EXAMPLE]
+#
+#  perms:
+#    - "[Message] &#FB9C08&lSWAPPER&7: &fYou &#FB9C08don't have&f enough permissions!"
+#  cooldown:
+#    - "[Message] &#FB9C08&lSWAPPER&7: &fPlease wait &#FB9C08%cooldown% &fseconds before trying again"
+#  cooldown-expired:
+#    - "[Message] &#FB9C08&lSWAPPER&7: &fCooldown expired!"
+#  swapper:
+#    - "[Message] &#FB9C08&lSWAPPER&7: &fYou swapped to &#FB9C08%item%"
+#  toggle:
+#    - "[Message] &#FB9C08&lSWAPPER&7: &fYou toggled the swapper to &#FB9C08%toggle%"
+#  toggle-disable:
+#    - "[Message] &#FB9C08&lSWAPPER&7: &fItem not swapped, swapper is disabled! &7(Click to enable) {HoverText:cmd /helytraswap toggle, text: &#FB9C08Enable swapper}"
+#  disabled-world:
+#    - "[Message] &#FB9C08&lSWAPPER&7: &fSwapping elytras is disabled in this &#FB9C08world&f!"
+#
+# [ THIS IS ENGLISH EXAMPLE]
+#
