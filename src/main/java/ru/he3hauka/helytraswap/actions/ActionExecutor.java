@@ -99,10 +99,38 @@ public class ActionExecutor {
     private void sendTitle(Player player, String raw, String cooldownTime, String item, String toggle) {
         if (player == null) return;
         String formatted = formatWithPlaceholders(raw, player, cooldownTime, item, toggle);
-        String[] parts = formatted.split("&&");
-        Component title = SERIALIZER.deserialize(parts.length > 0 ? parts[0].trim() : "");
-        Component subtitle = SERIALIZER.deserialize(parts.length > 1 ? parts[1].trim() : "");
-        player.showTitle(Title.title(title, subtitle, Title.Times.of(Duration.ofMillis(500), Duration.ofMillis(2000), Duration.ofMillis(1000))));
+
+        String[] parts = formatted.split("%%");
+        String titleContent = parts[0].trim();
+        long fadeIn = 500;
+        long stay = 2000;
+        long fadeOut = 1000;
+
+        if (parts.length > 1) {
+            String[] timeParts = parts[1].trim().split("\\*");
+            if (timeParts.length >= 3) {
+                try {
+                    fadeIn = Long.parseLong(timeParts[0].trim());
+                    stay = Long.parseLong(timeParts[1].trim());
+                    fadeOut = Long.parseLong(timeParts[2].trim());
+                } catch (NumberFormatException ignored) {
+                }
+            }
+        }
+
+        String[] titleParts = titleContent.split("&&");
+        Component title = SERIALIZER.deserialize(titleParts.length > 0 ? titleParts[0].trim() : "");
+        Component subtitle = SERIALIZER.deserialize(titleParts.length > 1 ? titleParts[1].trim() : "");
+
+        player.showTitle(Title.title(
+                title,
+                subtitle,
+                Title.Times.of(
+                        Duration.ofMillis(fadeIn),
+                        Duration.ofMillis(stay),
+                        Duration.ofMillis(fadeOut)
+                )
+        ));
     }
 
     private void sendActionBar(Player player, String raw, String cooldownTime, String item, String toggle) {
