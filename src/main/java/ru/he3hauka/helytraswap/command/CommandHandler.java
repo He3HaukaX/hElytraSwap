@@ -36,11 +36,6 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!sender.hasPermission("helytraswap.admin") || !sender.isOp()) {
-            sender.sendMessage("§7[§x§F§B§9§C§0§8hElytraSwap§7] §fYou don't have enough rights!");
-            return false;
-        }
-
         if (args.length == 0) {
             sender.sendMessage("§x§F§B§9§C§0§8╔");
             sender.sendMessage("§x§F§B§9§C§0§8╠ §f/" + label + " reload §7(§x§F§B§9§C§0§8Reloads plugin config§7)");
@@ -52,6 +47,10 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         switch (args[0].toLowerCase()) {
             case "reload":
             case "reboot": {
+                if (!sender.hasPermission("helytraswap.reload") || !sender.isOp()) {
+                    sender.sendMessage("§7[§x§F§B§9§C§0§8hElytraSwap§7] §fYou don't have enough rights!");
+                    return false;
+                }
                 sender.sendMessage("§7[§x§F§B§9§C§0§8hElytraSwap§7] §fAn attempt to §x§F§B§9§C§0§8restart§f the plugin...!");
                 long start = System.currentTimeMillis();
                 config.init();
@@ -64,6 +63,11 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
                 if (!(sender instanceof Player)) {
                     sender.sendMessage("§cOnly players can use this command!");
                     return true;
+                }
+
+                if (!sender.hasPermission("helytraswap.toggle") || !sender.isOp()) {
+                    sender.sendMessage("§7[§x§F§B§9§C§0§8hElytraSwap§7] §fYou don't have enough rights!");
+                    return false;
                 }
 
                 Player player = (Player) sender;

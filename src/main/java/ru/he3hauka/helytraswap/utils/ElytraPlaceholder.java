@@ -1,4 +1,4 @@
-package ru.he3hauka.helytraswap.softdepend;
+package ru.he3hauka.helytraswap.utils;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
@@ -7,11 +7,13 @@ import ru.he3hauka.helytraswap.command.CommandHandler;
 import ru.he3hauka.helytraswap.config.Config;
 import ru.he3hauka.helytraswap.storage.Database;
 
-public class PlaceholderDepend extends PlaceholderExpansion {
+public class ElytraPlaceholder extends PlaceholderExpansion {
     private final Database database;
     private final Config config;
     private final CommandHandler commandHandler;
-    public PlaceholderDepend(Database database, Config config, CommandHandler commandHandler) {
+    public ElytraPlaceholder(Database database,
+                             Config config,
+                             CommandHandler commandHandler) {
         this.database = database;
         this.config = config;
         this.commandHandler = commandHandler;
@@ -29,7 +31,7 @@ public class PlaceholderDepend extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getVersion() {
-        return "1.4";
+        return "1.0";
     }
 
     @Override

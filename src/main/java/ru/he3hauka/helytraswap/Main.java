@@ -5,11 +5,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import ru.he3hauka.helytraswap.actions.ActionExecutor;
 import ru.he3hauka.helytraswap.command.CommandHandler;
 import ru.he3hauka.helytraswap.config.Config;
-import ru.he3hauka.helytraswap.softdepend.PlaceholderDepend;
 import ru.he3hauka.helytraswap.storage.Database;
 import ru.he3hauka.helytraswap.storage.MySQLDatabase;
 import ru.he3hauka.helytraswap.storage.SQLiteDatabase;
-import ru.he3hauka.helytraswap.swap.Elytra;
+import ru.he3hauka.helytraswap.swap.ElytraListener;
+import ru.he3hauka.helytraswap.swap.SwapHandler;
+import ru.he3hauka.helytraswap.utils.ElytraPlaceholder;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,13 +47,14 @@ public class Main extends JavaPlugin {
 
         ActionExecutor actionExecutor = new ActionExecutor();
         CommandHandler commandHandler = new CommandHandler(config, database, actionExecutor);
+        SwapHandler swapHandler = new SwapHandler(this, config, actionExecutor);
 
-        Elytra elytra = new Elytra(this, config, commandHandler, actionExecutor);
+        ElytraListener elytra = new ElytraListener(swapHandler, commandHandler, config, actionExecutor);
         getServer().getPluginManager().registerEvents(elytra, this);
         getCommand("helytraswap").setExecutor(commandHandler);
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI") && database != null) {
-            new PlaceholderDepend(database, config, commandHandler).register();
+            new ElytraPlaceholder(database, config, commandHandler).register();
         }
 
         if (getConfig().getBoolean("settings.update", true)) {
