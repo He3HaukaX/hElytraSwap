@@ -33,7 +33,7 @@ public class ElytraListener implements Listener {
         var player = event.getPlayer();
         var now = System.currentTimeMillis();
 
-        if (shortCooldown.containsKey(player) && now - shortCooldown.get(player) < 500) return;
+        if (shortCooldown.containsKey(player) && now - shortCooldown.get(player) < 400) return;
         shortCooldown.put(player, now);
 
         commandHandler.getToggleStatus(player.getUniqueId()).thenAccept(toggle -> {

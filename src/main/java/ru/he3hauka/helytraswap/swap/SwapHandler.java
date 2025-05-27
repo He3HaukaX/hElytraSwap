@@ -24,20 +24,26 @@ public class SwapHandler {
         this.executor = executor;
     }
 
-    public void swap(Player player,
-                     ItemStack handItem,
-                     ItemStack chestplate,
-                     boolean isElytra) {
-        var equip = new ItemStack(handItem.getType());
-        equip.setItemMeta(handItem.getItemMeta());
+    public void swap(Player player, ItemStack handItem, ItemStack chestplate, boolean isElytra) {
+        if (handItem == null) return;
 
-        if (handItem.getAmount() > 1) handItem.setAmount(handItem.getAmount() - 1);
-        else player.getInventory().setItemInMainHand(null);
+        ItemStack equip = handItem.clone();
+        equip.setAmount(1);
+
+        if (handItem.getAmount() > 1) {
+            handItem.setAmount(handItem.getAmount() - 1);
+            player.getInventory().setItemInMainHand(handItem);
+        } else {
+            player.getInventory().setItemInMainHand(null);
+        }
 
         if (chestplate != null) {
             var inv = player.getInventory();
-            if (inv.firstEmpty() != -1) inv.addItem(chestplate);
-            else player.getWorld().dropItemNaturally(player.getLocation(), chestplate);
+            if (inv.firstEmpty() != -1) {
+                inv.addItem(chestplate);
+            } else {
+                player.getWorld().dropItemNaturally(player.getLocation(), chestplate);
+            }
         }
 
         player.getInventory().setChestplate(equip);

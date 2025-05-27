@@ -1,5 +1,5 @@
 name: hElytraSwap
-version: "1.7"
+version: "1.7.1"
 api-version: 1.16
 main: ru.he3hauka.helytraswap.Main
 authors:
